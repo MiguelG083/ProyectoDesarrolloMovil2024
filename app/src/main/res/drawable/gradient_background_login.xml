@@ -1,0 +1,19 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Imagen -->
+    <item android:drawable="@drawable/bg_store"
+        android:gravity="center" />
+
+    <!-- Fondo con gradiente lineal -->
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <gradient
+                android:type="linear"
+                android:angle="270"
+                android:startColor="@color/blue1"
+                android:centerColor="@color/transparent"
+                android:endColor="#FFFFFF">
+            </gradient>
+        </shape>
+    </item>
+
+</layer-list>
