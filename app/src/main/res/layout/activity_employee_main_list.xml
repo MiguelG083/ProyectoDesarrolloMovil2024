@@ -60,13 +60,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
                 android:gravity="center"
+                android:onClick="pupopMenuFilter"
+                android:text="Ordenar por..."
                 android:textColor="#000000"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                android:text="Ordenar por..."
-                android:layout_marginRight="30dp"
-                android:onClick="pupopMenuFilter" />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

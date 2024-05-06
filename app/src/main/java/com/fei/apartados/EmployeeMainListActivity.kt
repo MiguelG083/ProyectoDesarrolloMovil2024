@@ -1,45 +1,54 @@
 package com.fei.apartados
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ListView
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlin.random.Random
 
 
 class EmployeeMainListActivity : AppCompatActivity() {
+    private lateinit var adapter: WidgetListAppartAdapter
+    private val widgetsList = mutableListOf<WidgetListAppart>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee_main_list)
 
-
-
         val lv_apparts = findViewById<ListView>(R.id.lv_apparts)
 
-        // Aquí deberías obtener los datos de tu base de datos y crear instancias de MyCustomWidget
-        // Para este ejemplo, vamos a suponer que ya tienes una lista de widgets
-
-//        val widgetsList = listOf<WidgetListAppart>(
-//            WidgetListAppart(404, "Eduardo Lozada Anastacio", "28/04/2024", "$450", "4 articulos"),
-//        )
-        val widgetsList = mutableListOf<WidgetListAppart>()
+        // Crear widgets de ejemplo
         val cantidadElementos = 15
         for (i in 1..cantidadElementos) {
+            val numeroAleatorio = Random.nextInt(1000)
+
             val widget = WidgetListAppart(
-                i,
+                numeroAleatorio,
                 "Eduardo Lozada Anastacio",
                 "28/04/2024",
                 "$450",
                 "4 articulos",
-                'e'
+                'n'
             )
             widgetsList.add(widget)
         }
 
-
         // Crear el adaptador y asignarlo al ListView
-        val adapter = WidgetListAppartAdapter(this, widgetsList)
+        adapter = WidgetListAppartAdapter(this, widgetsList)
         lv_apparts.adapter = adapter
+
+
+
+        val floatingActionButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        floatingActionButton.setOnClickListener{
+            val intent = Intent(this, EmployeeNewAppartView::class.java)
+            startActivity(intent)
+        }
     }
 
     fun pupopMenuFilter(view: View) {
@@ -48,11 +57,11 @@ class EmployeeMainListActivity : AppCompatActivity() {
             // Manejar la selección del usuario aquí
             when (item.itemId) {
                 R.id.opc1 -> {
-                    // Ordenar por nombre
+                    ordenarPorNombre()
                     true
                 }
                 R.id.opc2 -> {
-                    // Ordenar por fecha
+                    ordenarPorFecha()
                     true
                 }
                 // Agregar más casos según sea necesario
@@ -63,4 +72,13 @@ class EmployeeMainListActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
+    private fun ordenarPorNombre() {
+        widgetsList.sortBy { it.id } // Cambia "nombre" por el atributo real del widget que deseas ordenar
+        adapter.notifyDataSetChanged() // Notificar al adaptador que los datos han cambiado
+    }
+
+    private fun ordenarPorFecha() {
+        widgetsList.sortBy { it.client } // Cambia "fecha" por el atributo real del widget que deseas ordenar
+        adapter.notifyDataSetChanged() // Notificar al adaptador que los datos han cambiado
+    }
 }
