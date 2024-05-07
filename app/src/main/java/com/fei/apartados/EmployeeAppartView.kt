@@ -51,16 +51,27 @@ class EmployeeAppartView : AppCompatActivity() {
         popupMenu.inflate(R.menu.menu_personalizado)
         popupMenu.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.opcion1 -> {
+                R.id.opc1 -> {
                     // Acción para la opción 1
                     Toast.makeText(this, "Opción 1 seleccionada", Toast.LENGTH_SHORT).show()
                     true
                 }
-                R.id.opcion2 -> {
+                R.id.opc2 -> {
                     // Acción para la opción 2
                     Toast.makeText(this, "Opción 2 seleccionada", Toast.LENGTH_SHORT).show()
                     true
                 }
+                R.id.opc3 -> {
+                    // Acción para la opción 2
+                    Toast.makeText(this, "Opción 3 seleccionada", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.opc4 -> {
+                    // Acción para la opción 2
+                    Toast.makeText(this, "Opción 4 seleccionada", Toast.LENGTH_SHORT).show()
+                    true
+                }
+
                 // Agregar más casos según sea necesario
                 else -> false
             }
