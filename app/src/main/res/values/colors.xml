@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blue1">#3f779f</color>
+    <color name="green1">#69dc32</color>
+    <color name="orange1">#ff8f36</color>
+    <color name="red1">#ff4c2b</color>
+
     <color name="statusN">#d9d9d9</color>
     <color name="statusS">#69dc32</color>
     <color name="statusD">#ff8f36</color>
     <color name="statusE">#ff4c2b</color>
+
     <color name="transparent">#80FFFFFF</color>
+
 </resources>

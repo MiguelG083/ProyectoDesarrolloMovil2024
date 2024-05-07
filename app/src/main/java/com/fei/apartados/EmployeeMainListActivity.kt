@@ -3,9 +3,9 @@ package com.fei.apartados
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ListView
 import android.widget.PopupMenu
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.random.Random
@@ -14,13 +14,27 @@ import kotlin.random.Random
 class EmployeeMainListActivity : AppCompatActivity() {
     private lateinit var adapter: WidgetListAppartAdapter
     private val widgetsList = mutableListOf<WidgetListAppart>()
+    private lateinit var lv_apparts: ListView
+    private lateinit var floatingActionButton: FloatingActionButton
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee_main_list)
 
-        val lv_apparts = findViewById<ListView>(R.id.lv_apparts)
+        lv_apparts = findViewById(R.id.lv_apparts)
+        floatingActionButton = findViewById(R.id.floatingActionButton)
+        searchView = findViewById(R.id.searchView)
 
+        loadData()
+
+        floatingActionButton.setOnClickListener{
+            val intent = Intent(this, EmployeeNewAppartView::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun loadData() {
         // Crear widgets de ejemplo
         val cantidadElementos = 15
         for (i in 1..cantidadElementos) {
@@ -40,15 +54,6 @@ class EmployeeMainListActivity : AppCompatActivity() {
         // Crear el adaptador y asignarlo al ListView
         adapter = WidgetListAppartAdapter(this, widgetsList)
         lv_apparts.adapter = adapter
-
-
-
-        val floatingActionButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-
-        floatingActionButton.setOnClickListener{
-            val intent = Intent(this, EmployeeNewAppartView::class.java)
-            startActivity(intent)
-        }
     }
 
     fun pupopMenuFilter(view: View) {

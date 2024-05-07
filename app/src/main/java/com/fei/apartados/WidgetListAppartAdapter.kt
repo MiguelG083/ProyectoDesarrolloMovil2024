@@ -10,12 +10,12 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 class WidgetListAppartAdapter(context: Context, widgetsList: List<WidgetListAppart>) :
-    ArrayAdapter<WidgetListAppart>(context, R.layout.widget_list_appart, widgetsList) {
+    ArrayAdapter<WidgetListAppart>(context, R.layout.widget_list_appart_item, widgetsList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
         if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.widget_list_appart, parent, false)
+            view = LayoutInflater.from(context).inflate(R.layout.widget_list_appart_item, parent, false)
         }
 
         val widget = getItem(position)
