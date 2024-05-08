@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
+
         val user = editTextUser.text.toString()
         val password = editTextPassword.text.toString()
 
@@ -45,6 +46,12 @@ class LoginActivity : AppCompatActivity() {
         }else {
             Toast.makeText(this, "Nombre incorrecto", Toast.LENGTH_SHORT).show()
         }
+        //Implementar logica para el login recuperando informacion de una base de datos
+        val intent = Intent(this, EmployeeAppartView::class.java)
+        startActivity(intent)
+
+        /* val intent = Intent(this, EmployeeMainListActivity::class.java)
+        startActivity(intent) */
     }
 
 
